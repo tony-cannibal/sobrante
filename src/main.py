@@ -3,13 +3,14 @@ from ttkbootstrap import Style
 import os
 
 from Start import StartUI
+from Sobrante import SobranteUI
 
 
 class Application(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Inventario Wip Feeder")
-        self.geometry("800x520")
+        self.geometry("1000x620")
         self.resizable(False, False)
         self.style = Style("darkly")
 
@@ -21,7 +22,10 @@ class Application(tk.Tk):
         self.container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (StartUI.StartPage,):  # InventoryUI.Inventory, AdminUI.Admin):
+        for F in (
+            StartUI.StartPage,
+            SobranteUI.Sobrante,
+        ):  # InventoryUI.Inventory, AdminUI.Admin):
             # page_name = F.__name__
             # frame = F(parent=container, controller=self, path=self.rootPath)
             # self.frames[page_name] = frame
@@ -43,7 +47,7 @@ class Application(tk.Tk):
 
     def show_frame(self, page_name):
         """Show a frame for the given page name"""
-        self.changeGeometry(page_name)
+        # self.changeGeometry(page_name)
         frame = self.frames[page_name]
         frame.tkraise()
 

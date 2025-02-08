@@ -14,13 +14,13 @@ class StartPage(ttk.Frame):
         self.database = fn.getDatabase(self.rootPath)
 
         customFont = font.Font(family="Arial", size=40, slant="italic")
-        self.label = tk.Label(self, text="Inventario Wip Feeder", font=customFont)
+        self.label = tk.Label(self, text="Sobrante", font=customFont)
         # font=controller.title_font)
         self.label.pack(side="top", fill="x", pady=(150, 20))
 
         buttonFont = font.Font(family="Arial", size=20, slant="italic")
         self.button1 = tk.Button(
-            self, text="Inicio", font=buttonFont, padx=60, command=self.showInventory
+            self, text="Inicio", font=buttonFont, padx=60, command=self.showMainWindow
         )
         self.button1.pack(pady=10)
         self.button2 = tk.Button(
@@ -30,12 +30,8 @@ class StartPage(ttk.Frame):
         self.statusLabel = tk.Label(self, text="", font="Arial 14", fg="red")
         self.statusLabel.pack()
 
-    def showInventory(self):
-        isActive = fn.getActiveStatus(self.database)
-        if isActive:
-            self.controller.show_frame("Inventory")
-        else:
-            self.statusLabel.config(text="El inventario no esta activo.")
+    def showMainWindow(self):
+        self.controller.show_frame("Sobrante")
 
     def showAdmin(self):
         self.statusLabel.config(text="")
